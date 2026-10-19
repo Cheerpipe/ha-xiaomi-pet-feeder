@@ -1,0 +1,300 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Cuenta Xiaomi",
+        "description": "Elige la región que aparece en la app Xiaomi Home (Perfil → Ajustes → Región) y cómo quieres iniciar sesión.",
+        "data": {
+          "server": "Región",
+          "login_method": "Método de inicio de sesión"
+        }
+      },
+      "password": {
+        "title": "Inicia sesión con tu cuenta Xiaomi",
+        "description": "La contraseña solo se usa para iniciar sesión una vez. Home Assistant guarda un token de sesión, no la contraseña.",
+        "data": {
+          "username": "Email, teléfono o ID de Xiaomi",
+          "password": "Contraseña"
+        }
+      },
+      "captcha": {
+        "title": "Captcha",
+        "description": "Xiaomi quiere comprobar que no eres un robot. Escribe los caracteres de la imagen (distingue mayúsculas).\n\n![Captcha](data:image/jpeg;base64,{captcha_image})",
+        "data": {
+          "captcha": "Caracteres"
+        }
+      },
+      "verify": {
+        "title": "Verificación en dos pasos",
+        "description": "Xiaomi envió un código de verificación por {method}. Escríbelo aquí.",
+        "data": {
+          "code": "Código de verificación"
+        }
+      },
+      "devices": {
+        "title": "Comederos",
+        "description": "Elige los comederos que quieres añadir a Home Assistant.",
+        "data": {
+          "devices": "Comederos"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Vuelve a iniciar sesión",
+        "description": "La sesión de Xiaomi caducó y no se pudo renovar automáticamente. Inicia sesión de nuevo para que tus comederos sigan funcionando.",
+        "data": {
+          "login_method": "Método de inicio de sesión"
+        }
+      }
+    },
+    "progress": {
+      "scan_qr": "Abre la app Xiaomi Home, toca el icono de escanear en la pestaña Perfil y escanea este código. Después confirma el inicio de sesión en el móvil.\n\n![QR](data:image/png;base64,{qr_image})\n\nTambién puedes abrir [este enlace]({login_url}) en el móvil donde tienes la app."
+    },
+    "error": {
+      "invalid_auth": "Usuario o contraseña incorrectos.",
+      "invalid_code": "El código de verificación no es válido.",
+      "invalid_captcha": "El captcha no es correcto, inténtalo otra vez.",
+      "blocked": "Xiaomi bloqueó temporalmente los inicios de sesión desde esta red. Espera un rato o usa el código QR.",
+      "cannot_connect": "No se pudo conectar con los servidores de Xiaomi.",
+      "login_failed": "Xiaomi rechazó el inicio de sesión. Prueba con el código QR."
+    },
+    "abort": {
+      "already_configured": "Esta cuenta y región ya están configuradas.",
+      "no_devices": "No se encontró ningún Smart Pet Food Feeder 2 en la región {server}. Revisa la región en la app Xiaomi Home.",
+      "cannot_connect": "No se pudo conectar con los servidores de Xiaomi.",
+      "invalid_auth": "La sesión de Xiaomi no es válida.",
+      "qr_expired": "El código QR caducó antes de confirmarse.",
+      "wrong_account": "Iniciaste sesión con otra cuenta de Xiaomi."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Frecuencia de actualización",
+        "data": {
+          "status_interval": "Estado del comedero",
+          "records_interval": "Comida consumida y registro"
+        },
+        "data_description": {
+          "status_interval": "Cada cuánto se lee el peso del cuenco, las alertas y los ajustes.",
+          "records_interval": "Cada cuánto se pide a la nube de Xiaomi la comida consumida hoy y el registro de alimentación."
+        }
+      }
+    }
+  },
+  "selector": {
+    "server": {
+      "options": {
+        "cn": "China",
+        "de": "Europa",
+        "i2": "India",
+        "ru": "Rusia",
+        "sg": "Singapur",
+        "us": "Estados Unidos",
+        "tw": "Taiwán"
+      }
+    },
+    "login_method": {
+      "options": {
+        "password": "Usuario y contraseña",
+        "qr": "Código QR con la app Xiaomi Home"
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "eaten_today": { "name": "Comida consumida hoy" },
+      "bowl_food": { "name": "Comida que queda en el cuenco" },
+      "schedule_progress": { "name": "Progreso del programa de alimentación" },
+      "dispense_progress": { "name": "Progreso de dispensación" },
+      "feeding_log": {
+        "name": "Registro de alimentación de hoy",
+        "unit_of_measurement": "registros"
+      },
+      "status": {
+        "name": "Estado",
+        "state": {
+          "dispensing": "Dispensando",
+          "food_stuck": "Atasco de comida",
+          "food_low": "Comida insuficiente",
+          "bowl_error": "Error del cuenco",
+          "low_intake": "Bajo consumo de comida",
+          "refill_due": "Es el momento de rellenar",
+          "schedule_running": "Programa en curso",
+          "schedule_completed": "Programa completado",
+          "no_schedule": "Sin programa"
+        }
+      },
+      "desiccant": {
+        "name": "Estado del cartucho desecante",
+        "state": {
+          "sufficient": "Suficiente",
+          "insufficient": "Insuficiente",
+          "exhausted": "Agotado",
+          "unknown": "Estado desconocido"
+        }
+      }
+    },
+    "binary_sensor": {
+      "food_stuck": { "name": "Atasco de comida" },
+      "food_low": { "name": "Comida insuficiente" },
+      "bowl_error": { "name": "Error del cuenco" },
+      "low_intake": { "name": "Bajo consumo de comida" },
+      "refill_due": { "name": "Es el momento de rellenar" },
+      "weight_sensor_error": { "name": "Error del sensor de peso" },
+      "bowl_full": { "name": "Cuenco lleno" },
+      "dispensing": { "name": "Dispensando" },
+      "battery_low": { "name": "Pilas de respaldo" }
+    },
+    "switch": {
+      "auto_feed": { "name": "Alimentación automática" },
+      "low_intake_notification": { "name": "Notificación de bajo consumo de comida" },
+      "refill_reminder": { "name": "Recordatorio de rellenado" },
+      "dispense_compensation": { "name": "Corrección de errores de dispensación" },
+      "prevent_spillage": { "name": "Prevención de derrames en el cuenco" },
+      "auto_screen_off": { "name": "Apagado automático de la pantalla" },
+      "child_lock": { "name": "Bloqueo infantil" }
+    },
+    "number": {
+      "portions": {
+        "name": "Porciones a dispensar",
+        "unit_of_measurement": "porciones"
+      },
+      "low_intake_threshold": { "name": "Umbral de bajo consumo de comida" },
+      "empty_bowl_duration": { "name": "Duración del cuenco vacío" }
+    },
+    "select": {
+      "screen_display": {
+        "name": "Visualización de datos en pantalla",
+        "state": {
+          "bowl_food": "Cantidad de comida restante en el comedero (g)",
+          "eaten_today": "Comida ingerida hoy (g)",
+          "schedule_progress": "Progreso del horario (%)"
+        }
+      }
+    },
+    "button": {
+      "dispense": { "name": "Dispensar" },
+      "calibrate": { "name": "Calibración del peso" },
+      "dismiss_low_intake": { "name": "Descartar aviso de bajo consumo" },
+      "dismiss_refill": { "name": "Descartar recordatorio de rellenado" },
+      "reset_desiccant": { "name": "Reiniciar desecante" }
+    },
+    "event": {
+      "dispense": {
+        "name": "Dispensación",
+        "state_attributes": {
+          "event_type": {
+            "state": {
+              "dispensed": "Dispensado",
+              "failed": "Fallido"
+            }
+          }
+        }
+      },
+      "meal": {
+        "name": "Comida",
+        "state_attributes": {
+          "event_type": {
+            "state": {
+              "ate": "La mascota comió"
+            }
+          }
+        }
+      }
+    },
+    "calendar": {
+      "feeding": { "name": "Alimentación" }
+    }
+  },
+  "exceptions": {
+    "auth_expired": { "message": "La sesión de Xiaomi caducó. Vuelve a iniciar sesión desde la página de la integración." },
+    "update_failed": { "message": "No se pudo actualizar desde la nube de Xiaomi: {error}" },
+    "device_offline": { "message": "El comedero está desconectado." },
+    "command_failed": { "message": "El comedero no aceptó la orden: {error}" },
+    "invalid_portions": { "message": "Las porciones deben estar entre {min} y {max}." },
+    "busy": { "message": "El comedero ya está dispensando." },
+    "food_stuck": { "message": "Hay un atasco de comida. Resuélvelo antes de volver a dispensar." },
+    "unknown_device": { "message": "{device_id} no es un comedero de esta integración." },
+    "entry_not_found": { "message": "No hay ninguna comida a las {time} en el programa." },
+    "schedule_too_many": { "message": "El programa puede tener como máximo {max} comidas." },
+    "schedule_invalid_time": { "message": "{time} no es una hora válida." },
+    "schedule_invalid_portions": { "message": "La comida de las {time} debe tener entre {min} y {max} porciones." },
+    "schedule_too_close": { "message": "Las comidas deben estar separadas al menos 5 minutos ({first} y {second})." }
+  },
+  "services": {
+    "dispense": {
+      "name": "Dispensar comida",
+      "description": "Dispensa comida ahora. Una porción son unos 10 g.",
+      "fields": {
+        "device_id": { "name": "Comedero", "description": "El comedero." },
+        "portions": { "name": "Porciones", "description": "Número de porciones (1-15)." }
+      }
+    },
+    "set_schedule": {
+      "name": "Definir programa de alimentación",
+      "description": "Reemplaza todo el programa diario de alimentación.",
+      "fields": {
+        "device_id": { "name": "Comedero", "description": "El comedero." },
+        "entries": { "name": "Comidas", "description": "Lista de comidas, cada una con hora (HH:MM) y porciones (1-15)." },
+        "auto_feed": { "name": "Alimentación automática", "description": "Activa o desactiva también la alimentación automática." }
+      }
+    },
+    "add_schedule_entry": {
+      "name": "Añadir comida",
+      "description": "Añade una comida diaria al programa, o cambia las porciones de una existente.",
+      "fields": {
+        "device_id": { "name": "Comedero", "description": "El comedero." },
+        "time": { "name": "Hora", "description": "Hora del día, en la hora local del comedero." },
+        "portions": { "name": "Porciones", "description": "Número de porciones (1-15)." }
+      }
+    },
+    "remove_schedule_entry": {
+      "name": "Quitar comida",
+      "description": "Quita una comida diaria del programa.",
+      "fields": {
+        "device_id": { "name": "Comedero", "description": "El comedero." },
+        "time": { "name": "Hora", "description": "Hora de la comida que se quita." }
+      }
+    },
+    "set_schedule_entry_today": {
+      "name": "Saltar o recuperar una comida hoy",
+      "description": "Desactiva o reactiva una comida solo por hoy, como hace la app.",
+      "fields": {
+        "device_id": { "name": "Comedero", "description": "El comedero." },
+        "time": { "name": "Hora", "description": "Hora de la comida." },
+        "enabled": { "name": "Activada", "description": "Si la comida se sirve hoy." }
+      }
+    },
+    "get_schedule": {
+      "name": "Obtener programa de alimentación",
+      "description": "Devuelve el programa diario de alimentación.",
+      "fields": {
+        "device_id": { "name": "Comedero", "description": "El comedero." }
+      }
+    },
+    "get_feeding_history": {
+      "name": "Obtener historial de alimentación",
+      "description": "Devuelve las comidas y dispensaciones registradas en la nube de Xiaomi (hasta 90 días).",
+      "fields": {
+        "device_id": { "name": "Comedero", "description": "El comedero." },
+        "days": { "name": "Días", "description": "Cuántos días hacia atrás, incluido hoy." }
+      }
+    },
+    "get_hourly_stats": {
+      "name": "Obtener estadísticas por hora",
+      "description": "Devuelve los gramos consumidos y las porciones dispensadas por hora, como el gráfico diario de la app.",
+      "fields": {
+        "device_id": { "name": "Comedero", "description": "El comedero." },
+        "date": { "name": "Fecha", "description": "Día a consultar (por defecto, hoy)." }
+      }
+    },
+    "get_daily_stats": {
+      "name": "Obtener estadísticas diarias",
+      "description": "Devuelve los gramos consumidos y la comida que quedó en el cuenco por día durante la semana (domingo a sábado), como el gráfico semanal de la app.",
+      "fields": {
+        "device_id": { "name": "Comedero", "description": "El comedero." },
+        "date": { "name": "Fecha", "description": "Cualquier día de la semana a consultar (por defecto, hoy)." }
+      }
+    }
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "code": 0,
+  "message": "sucess",
+  "data": null,
+  "result": [
+    {
+      "timeZoneOffSet": -10800,
+      "ts": 1792385200,
+      "siid": 2,
+      "eiid": 1,
+      "params": [
+        {
+          "piid": 18,
+          "value": "4"
+        },
+        {
+          "piid": 25,
+          "value": "1792385200"
+        },
+        {
+          "piid": 28,
+          "value": "0"
+        },
+        {
+          "piid": 27,
+          "value": "-10800"
+        }
+      ]
+    },
+    {
+      "timeZoneOffSet": -10800,
+      "ts": 1792400400,
+      "siid": 2,
+      "eiid": 3,
+      "params": [
+        {
+          "piid": 16,
+          "value": "2"
+        },
+        {
+          "piid": 8,
+          "value": "10"
+        },
+        {
+          "piid": 17,
+          "value": "1792400400"
+        },
+        {
+          "piid": 27,
+          "value": "-10800"
+        }
+      ]
+    },
+    {
+      "timeZoneOffSet": -10800,
+      "ts": 1792400593,
+      "siid": 2,
+      "eiid": 1,
+      "params": [
+        {
+          "piid": 18,
+          "value": "4"
+        },
+        {
+          "piid": 25,
+          "value": "1792400593"
+        },
+        {
+          "piid": 28,
+          "value": "0"
+        },
+        {
+          "piid": 27,
+          "value": "-10800"
+        }
+      ]
+    },
+    {
+      "timeZoneOffSet": -10800,
+      "ts": 1792400687,
+      "siid": 2,
+      "eiid": 1,
+      "params": [
+        {
+          "piid": 18,
+          "value": "4"
+        },
+        {
+          "piid": 25,
+          "value": "1792400687"
+        },
+        {
+          "piid": 28,
+          "value": "0"
+        },
+        {
+          "piid": 27,
+          "value": "-10800"
+        }
+      ]
+    }
+  ]
+}

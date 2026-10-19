@@ -1,0 +1,23 @@
+{
+  "code": 0,
+  "message": "sucess",
+  "data": null,
+  "result": {
+    "dailyEatFoodRecords": [
+      {
+        "date": "2026-10-18",
+        "param": "33"
+      },
+      {
+        "date": "2026-10-19",
+        "param": "12"
+      }
+    ],
+    "dailyRestFoodRecords": [
+      {
+        "date": "2026-10-18",
+        "param": "0"
+      }
+    ]
+  }
+}

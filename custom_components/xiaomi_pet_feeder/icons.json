@@ -1,0 +1,84 @@
+{
+  "entity": {
+    "sensor": {
+      "eaten_today": { "default": "mdi:food-drumstick" },
+      "bowl_food": { "default": "mdi:bowl-mix" },
+      "schedule_progress": { "default": "mdi:progress-clock" },
+      "dispense_progress": { "default": "mdi:progress-download" },
+      "feeding_log": { "default": "mdi:format-list-bulleted" },
+      "status": {
+        "default": "mdi:paw",
+        "state": {
+          "dispensing": "mdi:tray-arrow-down",
+          "food_stuck": "mdi:alert-octagon",
+          "food_low": "mdi:food-off",
+          "bowl_error": "mdi:bowl-outline",
+          "low_intake": "mdi:trending-down",
+          "refill_due": "mdi:bell-ring",
+          "schedule_running": "mdi:calendar-clock",
+          "schedule_completed": "mdi:calendar-check",
+          "no_schedule": "mdi:calendar-blank"
+        }
+      },
+      "desiccant": {
+        "default": "mdi:water-off",
+        "state": {
+          "insufficient": "mdi:water-alert",
+          "exhausted": "mdi:water-remove"
+        }
+      }
+    },
+    "binary_sensor": {
+      "food_stuck": { "default": "mdi:alert-octagon" },
+      "food_low": { "default": "mdi:food-off" },
+      "bowl_error": { "default": "mdi:bowl-outline" },
+      "low_intake": { "default": "mdi:trending-down" },
+      "refill_due": { "default": "mdi:bell-ring" },
+      "weight_sensor_error": { "default": "mdi:scale-off" },
+      "bowl_full": { "default": "mdi:bowl-mix" },
+      "dispensing": { "default": "mdi:tray-arrow-down" }
+    },
+    "switch": {
+      "auto_feed": { "default": "mdi:calendar-clock" },
+      "low_intake_notification": { "default": "mdi:bell-alert" },
+      "refill_reminder": { "default": "mdi:bell-ring" },
+      "dispense_compensation": { "default": "mdi:scale-balance" },
+      "prevent_spillage": { "default": "mdi:bowl-outline" },
+      "auto_screen_off": { "default": "mdi:monitor-off" },
+      "child_lock": { "default": "mdi:lock" }
+    },
+    "number": {
+      "portions": { "default": "mdi:counter" },
+      "low_intake_threshold": { "default": "mdi:percent" },
+      "empty_bowl_duration": { "default": "mdi:timer-sand" }
+    },
+    "select": {
+      "screen_display": { "default": "mdi:monitor-dashboard" }
+    },
+    "button": {
+      "dispense": { "default": "mdi:tray-arrow-down" },
+      "calibrate": { "default": "mdi:scale" },
+      "dismiss_low_intake": { "default": "mdi:bell-off" },
+      "dismiss_refill": { "default": "mdi:bell-off" },
+      "reset_desiccant": { "default": "mdi:restore" }
+    },
+    "event": {
+      "dispense": { "default": "mdi:tray-arrow-down" },
+      "meal": { "default": "mdi:cat" }
+    },
+    "calendar": {
+      "feeding": { "default": "mdi:calendar-clock" }
+    }
+  },
+  "services": {
+    "dispense": { "service": "mdi:tray-arrow-down" },
+    "set_schedule": { "service": "mdi:calendar-edit" },
+    "add_schedule_entry": { "service": "mdi:calendar-plus" },
+    "remove_schedule_entry": { "service": "mdi:calendar-minus" },
+    "set_schedule_entry_today": { "service": "mdi:calendar-remove" },
+    "get_schedule": { "service": "mdi:calendar-search" },
+    "get_feeding_history": { "service": "mdi:history" },
+    "get_hourly_stats": { "service": "mdi:chart-bar" },
+    "get_daily_stats": { "service": "mdi:chart-bar-stacked" }
+  }
+}

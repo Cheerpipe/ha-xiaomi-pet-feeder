@@ -1,0 +1,300 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Xiaomi account",
+        "description": "Pick the region shown in the Xiaomi Home app (Profile → Settings → Region) and how you want to sign in.",
+        "data": {
+          "server": "Region",
+          "login_method": "Sign-in method"
+        }
+      },
+      "password": {
+        "title": "Sign in with your Xiaomi account",
+        "description": "Your password is only used to sign in once. Home Assistant keeps a session token, not the password.",
+        "data": {
+          "username": "E-mail, phone or Xiaomi ID",
+          "password": "Password"
+        }
+      },
+      "captcha": {
+        "title": "Captcha",
+        "description": "Xiaomi wants to make sure you are not a robot. Type the characters in the image (case sensitive).\n\n![Captcha](data:image/jpeg;base64,{captcha_image})",
+        "data": {
+          "captcha": "Characters"
+        }
+      },
+      "verify": {
+        "title": "Two-step verification",
+        "description": "Xiaomi sent a verification code by {method}. Enter it below.",
+        "data": {
+          "code": "Verification code"
+        }
+      },
+      "devices": {
+        "title": "Feeders",
+        "description": "Choose the feeders to add to Home Assistant.",
+        "data": {
+          "devices": "Feeders"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Sign in again",
+        "description": "The Xiaomi session expired and could not be renewed automatically. Sign in again to keep your feeders working.",
+        "data": {
+          "login_method": "Sign-in method"
+        }
+      }
+    },
+    "progress": {
+      "scan_qr": "Open the Xiaomi Home app, tap the scan icon on the Profile tab and scan this code. Then confirm the sign-in on your phone.\n\n![QR](data:image/png;base64,{qr_image})\n\nYou can also open [this link]({login_url}) on the phone where the app is installed."
+    },
+    "error": {
+      "invalid_auth": "Wrong username or password.",
+      "invalid_code": "The verification code was not accepted.",
+      "invalid_captcha": "The captcha was not correct, try again.",
+      "blocked": "Xiaomi temporarily blocked sign-ins from this network. Wait a while or use the QR code.",
+      "cannot_connect": "Could not reach Xiaomi's servers.",
+      "login_failed": "Xiaomi rejected the sign-in. Try the QR code instead."
+    },
+    "abort": {
+      "already_configured": "This account and region are already set up.",
+      "no_devices": "No Smart Pet Food Feeder 2 was found in region {server}. Check the region in the Xiaomi Home app.",
+      "cannot_connect": "Could not reach Xiaomi's servers.",
+      "invalid_auth": "The Xiaomi session is not valid.",
+      "qr_expired": "The QR code expired before it was confirmed.",
+      "wrong_account": "You signed in with a different Xiaomi account."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Update intervals",
+        "data": {
+          "status_interval": "Device status",
+          "records_interval": "Food eaten and feeding log"
+        },
+        "data_description": {
+          "status_interval": "How often to read bowl weight, alerts and settings.",
+          "records_interval": "How often to ask Xiaomi's cloud for the food eaten today and the feeding log."
+        }
+      }
+    }
+  },
+  "selector": {
+    "server": {
+      "options": {
+        "cn": "China",
+        "de": "Europe",
+        "i2": "India",
+        "ru": "Russia",
+        "sg": "Singapore",
+        "us": "United States",
+        "tw": "Taiwan"
+      }
+    },
+    "login_method": {
+      "options": {
+        "password": "Username and password",
+        "qr": "QR code with the Xiaomi Home app"
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "eaten_today": { "name": "Food eaten today" },
+      "bowl_food": { "name": "Food left in the bowl" },
+      "schedule_progress": { "name": "Feeding schedule progress" },
+      "dispense_progress": { "name": "Dispensing progress" },
+      "feeding_log": {
+        "name": "Today's feeding log",
+        "unit_of_measurement": "entries"
+      },
+      "status": {
+        "name": "Status",
+        "state": {
+          "dispensing": "Dispensing",
+          "food_stuck": "Food jam",
+          "food_low": "Insufficient food",
+          "bowl_error": "Food bowl error",
+          "low_intake": "Low food consumption",
+          "refill_due": "Time to refill",
+          "schedule_running": "Schedule in progress",
+          "schedule_completed": "Schedule completed",
+          "no_schedule": "No schedule"
+        }
+      },
+      "desiccant": {
+        "name": "Desiccant cartridge",
+        "state": {
+          "sufficient": "Sufficient",
+          "insufficient": "Insufficient",
+          "exhausted": "Run out",
+          "unknown": "Status unknown"
+        }
+      }
+    },
+    "binary_sensor": {
+      "food_stuck": { "name": "Food jam" },
+      "food_low": { "name": "Insufficient food" },
+      "bowl_error": { "name": "Food bowl error" },
+      "low_intake": { "name": "Low food consumption" },
+      "refill_due": { "name": "Time to refill" },
+      "weight_sensor_error": { "name": "Weight sensor error" },
+      "bowl_full": { "name": "Food bowl full" },
+      "dispensing": { "name": "Dispensing" },
+      "battery_low": { "name": "Backup batteries" }
+    },
+    "switch": {
+      "auto_feed": { "name": "Automatic feeding" },
+      "low_intake_notification": { "name": "Low food consumption notification" },
+      "refill_reminder": { "name": "Refill reminder" },
+      "dispense_compensation": { "name": "Dispensing error correction" },
+      "prevent_spillage": { "name": "Food bowl spillage prevention" },
+      "auto_screen_off": { "name": "Auto screen-off" },
+      "child_lock": { "name": "Child lock" }
+    },
+    "number": {
+      "portions": {
+        "name": "Portions to dispense",
+        "unit_of_measurement": "portions"
+      },
+      "low_intake_threshold": { "name": "Low food intake threshold" },
+      "empty_bowl_duration": { "name": "Empty food bowl duration" }
+    },
+    "select": {
+      "screen_display": {
+        "name": "Screen data display",
+        "state": {
+          "bowl_food": "Food left in the bowl (g)",
+          "eaten_today": "Food eaten today (g)",
+          "schedule_progress": "Schedule progress (%)"
+        }
+      }
+    },
+    "button": {
+      "dispense": { "name": "Dispense" },
+      "calibrate": { "name": "Weight calibration" },
+      "dismiss_low_intake": { "name": "Dismiss low consumption alert" },
+      "dismiss_refill": { "name": "Dismiss refill reminder" },
+      "reset_desiccant": { "name": "Reset desiccant" }
+    },
+    "event": {
+      "dispense": {
+        "name": "Dispense",
+        "state_attributes": {
+          "event_type": {
+            "state": {
+              "dispensed": "Dispensed",
+              "failed": "Failed"
+            }
+          }
+        }
+      },
+      "meal": {
+        "name": "Meal",
+        "state_attributes": {
+          "event_type": {
+            "state": {
+              "ate": "Pet ate"
+            }
+          }
+        }
+      }
+    },
+    "calendar": {
+      "feeding": { "name": "Feeding" }
+    }
+  },
+  "exceptions": {
+    "auth_expired": { "message": "The Xiaomi session expired. Sign in again from the integration page." },
+    "update_failed": { "message": "Could not update from Xiaomi's cloud: {error}" },
+    "device_offline": { "message": "The feeder is offline." },
+    "command_failed": { "message": "The feeder did not accept the command: {error}" },
+    "invalid_portions": { "message": "Portions must be between {min} and {max}." },
+    "busy": { "message": "The feeder is already dispensing." },
+    "food_stuck": { "message": "Food is jammed. Clear the jam before dispensing again." },
+    "unknown_device": { "message": "{device_id} is not a feeder of this integration." },
+    "entry_not_found": { "message": "There is no feeding at {time} in the schedule." },
+    "schedule_too_many": { "message": "The schedule can have at most {max} feedings." },
+    "schedule_invalid_time": { "message": "{time} is not a valid time." },
+    "schedule_invalid_portions": { "message": "The feeding at {time} must have between {min} and {max} portions." },
+    "schedule_too_close": { "message": "Feedings must be at least 5 minutes apart ({first} and {second})." }
+  },
+  "services": {
+    "dispense": {
+      "name": "Dispense food",
+      "description": "Dispense food now. One portion is about 10 g.",
+      "fields": {
+        "device_id": { "name": "Feeder", "description": "The feeder." },
+        "portions": { "name": "Portions", "description": "Number of portions (1-15)." }
+      }
+    },
+    "set_schedule": {
+      "name": "Set feeding schedule",
+      "description": "Replace the whole daily feeding schedule.",
+      "fields": {
+        "device_id": { "name": "Feeder", "description": "The feeder." },
+        "entries": { "name": "Feedings", "description": "List of feedings, each with time (HH:MM) and portions (1-15)." },
+        "auto_feed": { "name": "Automatic feeding", "description": "Also turn automatic feeding on or off." }
+      }
+    },
+    "add_schedule_entry": {
+      "name": "Add feeding",
+      "description": "Add a daily feeding to the schedule, or change the portions of an existing one.",
+      "fields": {
+        "device_id": { "name": "Feeder", "description": "The feeder." },
+        "time": { "name": "Time", "description": "Time of day, device local time." },
+        "portions": { "name": "Portions", "description": "Number of portions (1-15)." }
+      }
+    },
+    "remove_schedule_entry": {
+      "name": "Remove feeding",
+      "description": "Remove a daily feeding from the schedule.",
+      "fields": {
+        "device_id": { "name": "Feeder", "description": "The feeder." },
+        "time": { "name": "Time", "description": "Time of the feeding to remove." }
+      }
+    },
+    "set_schedule_entry_today": {
+      "name": "Skip or restore a feeding today",
+      "description": "Disable or re-enable one feeding for today only, like the app does.",
+      "fields": {
+        "device_id": { "name": "Feeder", "description": "The feeder." },
+        "time": { "name": "Time", "description": "Time of the feeding." },
+        "enabled": { "name": "Enabled", "description": "Whether the feeding runs today." }
+      }
+    },
+    "get_schedule": {
+      "name": "Get feeding schedule",
+      "description": "Return the daily feeding schedule.",
+      "fields": {
+        "device_id": { "name": "Feeder", "description": "The feeder." }
+      }
+    },
+    "get_feeding_history": {
+      "name": "Get feeding history",
+      "description": "Return meals and dispenses recorded by Xiaomi's cloud (up to 90 days).",
+      "fields": {
+        "device_id": { "name": "Feeder", "description": "The feeder." },
+        "days": { "name": "Days", "description": "How many days back, including today." }
+      }
+    },
+    "get_hourly_stats": {
+      "name": "Get hourly statistics",
+      "description": "Return grams eaten and portions dispensed per hour, as in the app's daily chart.",
+      "fields": {
+        "device_id": { "name": "Feeder", "description": "The feeder." },
+        "date": { "name": "Date", "description": "Day to query (default today)." }
+      }
+    },
+    "get_daily_stats": {
+      "name": "Get daily statistics",
+      "description": "Return grams eaten and food left in the bowl per day for the week (Sunday to Saturday), as in the app's weekly chart.",
+      "fields": {
+        "device_id": { "name": "Feeder", "description": "The feeder." },
+        "date": { "name": "Date", "description": "Any day of the week to query (default today)." }
+      }
+    }
+  }
+}

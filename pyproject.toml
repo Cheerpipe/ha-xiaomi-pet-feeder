@@ -1,0 +1,26 @@
+[project]
+name = "ha-xiaomi-pet-feeder"
+version = "0.0.1"
+requires-python = ">=3.14.2"
+
+[tool.ruff]
+target-version = "py314"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "SIM", "RUF", "ASYNC", "D", "PL", "PT", "RET", "TRY", "C4", "PIE", "LOG", "G"]
+ignore = ["D203", "D213", "PLR0913", "PLR2004", "TRY003", "TRY300", "PLR0911", "PLR0912", "PLR0915", "D105", "D107", "RUF012", "PLR0917"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["D", "PLR2004", "S101", "E501"]
+
+[tool.ruff.lint.isort]
+force-sort-within-sections = true
+known-first-party = ["custom_components"]
+combine-as-imports = true
+split-on-trailing-comma = false
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+asyncio_default_fixture_loop_scope = "function"

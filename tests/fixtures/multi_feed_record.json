@@ -1,0 +1,967 @@
+{
+  "code": 0,
+  "message": "sucess",
+  "data": null,
+  "result": [
+    {
+      "timeZoneOffSet": -10800,
+      "ts": 1792400687,
+      "siid": 2,
+      "eiid": 1,
+      "params": [
+        {
+          "piid": 18,
+          "value": "4"
+        },
+        {
+          "piid": 25,
+          "value": "1792400687"
+        },
+        {
+          "piid": 28,
+          "value": "0"
+        },
+        {
+          "piid": 27,
+          "value": "-10800"
+        }
+      ]
+    },
+    {
+      "timeZoneOffSet": -10800,
+      "ts": 1792400593,
+      "siid": 2,
+      "eiid": 1,
+      "params": [
+        {
+          "piid": 18,
+          "value": "4"
+        },
+        {
+          "piid": 25,
+          "value": "1792400593"
+        },
+        {
+          "piid": 28,
+          "value": "0"
+        },
+        {
+          "piid": 27,
+          "value": "-10800"
+        }
+      ]
+    },
+    {
+      "timeZoneOffSet": -10800,
+      "ts": 1792400400,
+      "siid": 2,
+      "eiid": 3,
+      "params": [
+        {
+          "piid": 16,
+          "value": "2"
+        },
+        {
+          "piid": 8,
+          "value": "10"
+        },
+        {
+          "piid": 17,
+          "value": "1792400400"
+        },
+        {
+          "piid": 27,
+          "value": "-10800"
+        }
+      ]
+    },
+    {
+      "timeZoneOffSet": -10800,
+      "ts": 1792385200,
+      "siid": 2,
+      "eiid": 1,
+      "params": [
+        {
+          "piid": 18,
+          "value": "4"
+        },
+        {
+          "piid": 25,
+          "value": "1792385200"
+        },
+        {
+          "piid": 28,
+          "value": "0"
+        },
+        {
+          "piid": 27,
+          "value": "-10800"
+        }
+      ]
+    },
+    {
+      "timeZoneOffSet": -10800,
+      "ts": 1792364629,
+      "siid": 2,
+      "eiid": 1,
+      "params": [
+        {
+          "piid": 18,
+          "value": "4"
+        },
+        {
+          "piid": 25,
+          "value": "1792364629"
+        },
+        {
+          "piid": 28,
+          "value": "0"
+        },
+        {
+          "piid": 27,
+          "value": "-10800"
+        }
+      ]
+    },
+    {
+      "timeZoneOffSet": -10800,
+      "ts": 1792364400,
+      "siid": 2,
+      "eiid": 3,
+      "params": [
+        {
+          "piid": 16,
+          "value": "2"
+        },
+        {
+          "piid": 8,
+          "value": "10"
+        },
+        {
+          "piid": 17,
+          "value": "1792364400"
+        },
+        {
+          "piid": 27,
+          "value": "-10800"
+        }
+      ]
+    },
+    {
+      "timeZoneOffSet": -10800,
+      "ts": 1792358007,
+      "siid": 2,
+      "eiid": 1,
+      "params": [
+        {
+          "piid": 18,
+          "value": "4"
+        },
+        {
+          "piid": 25,
+          "value": "1792358007"
+        },
+        {
+          "piid": 28,
+          "value": "0"
+        },
+        {
+          "piid": 27,
+          "value": "-10800"
+        }
+      ]
+    },
+    {
+      "timeZoneOffSet": -10800,
+      "ts": 1792351479,
+      "siid": 2,
+      "eiid": 1,
+      "params": [
+        {
+          "piid": 18,
+          "value": "4"
+        },
+        {
+          "piid": 25,
+          "value": "1792351479"
+        },
+        {
+          "piid": 28,
+          "value": "0"
+        },
+        {
+          "piid": 27,
+          "value": "-10800"
+        }
+      ]
+    },
+    {
+      "timeZoneOffSet": -10800,
+      "ts": 1792350000,
+      "siid": 2,
+      "eiid": 3,
+      "params": [
+        {
+          "piid": 16,
+          "value": "2"
+        },
+        {
+          "piid": 8,
+          "value": "10"
+        },
+        {
+          "piid": 17,
+          "value": "1792350000"
+        },
+        {
+          "piid": 27,
+          "value": "-10800"
+        }
+      ]
+    },
+    {
+      "timeZoneOffSet": -10800,
+      "ts": 1792346187,
+      "siid": 2,
+      "eiid": 1,
+      "params": [
+        {
+          "piid": 18,
+          "value": "4"
+        },
+        {
+          "piid": 25,
+          "value": "1792346187"
+        },
+        {
+          "piid": 28,
+          "value": "0"
+        },
+        {
+          "piid": 27,
+          "value": "-10800"
+        }
+      ]
+    },
+    {
+      "timeZoneOffSet": -10800,
+      "ts": 1792328612,
+      "siid": 2,
+      "eiid": 1,
+      "params": [
+        {
+          "piid": 18,
+          "value": "4"
+        },
+        {
+          "piid": 25,
+          "value": "1792328612"
+        },
+        {
+          "piid": 28,
+          "value": "0"
+        },
+        {
+          "piid": 27,
+          "value": "-10800"
+        }
+      ]
+    },
+    {
+      "timeZoneOffSet": -10800,
+      "ts": 1792328400,
+      "siid": 2,
+      "eiid": 3,
+      "params": [
+        {
+          "piid": 16,
+          "value": "2"
+        },
+        {
+          "piid": 8,
+          "value": "10"
+        },
+        {
+          "piid": 17,
+          "value": "1792328400"
+        },
+        {
+          "piid": 27,
+          "value": "-10800"
+        }
+      ]
+    },
+    {
+      "timeZoneOffSet": -10800,
+      "ts": 1792319286,
+      "siid": 2,
+      "eiid": 1,
+      "params": [
+        {
+          "piid": 18,
+          "value": "4"
+        },
+        {
+          "piid": 25,
+          "value": "1792319286"
+        },
+        {
+          "piid": 28,
+          "value": "0"
+        },
+        {
+          "piid": 27,
+          "value": "-10800"
+        }
+      ]
+    },
+    {
+      "timeZoneOffSet": -10800,
+      "ts": 1792314696,
+      "siid": 2,
+      "eiid": 1,
+      "params": [
+        {
+          "piid": 18,
+          "value": "5"
+        },
+        {
+          "piid": 25,
+          "value": "1792314696"
+        },
+        {
+          "piid": 28,
+          "value": "0"
+        },
+        {
+          "piid": 27,
+          "value": "-10800"
+        }
+      ]
+    },
+    {
+      "timeZoneOffSet": -10800,
+      "ts": 1792314178,
+      "siid": 2,
+      "eiid": 1,
+      "params": [
+        {
+          "piid": 18,
+          "value": "4"
+        },
+        {
+          "piid": 25,
+          "value": "1792314178"
+        },
+        {
+          "piid": 28,
+          "value": "0"
+        },
+        {
+          "piid": 27,
+          "value": "-10800"
+        }
+      ]
+    },
+    {
+      "timeZoneOffSet": -10800,
+      "ts": 1792314000,
+      "siid": 2,
+      "eiid": 3,
+      "params": [
+        {
+          "piid": 16,
+          "value": "2"
+        },
+        {
+          "piid": 8,
+          "value": "10"
+        },
+        {
+          "piid": 17,
+          "value": "1792314000"
+        },
+        {
+          "piid": 27,
+          "value": "-10800"
+        }
+      ]
+    },
+    {
+      "timeZoneOffSet": -10800,
+      "ts": 1792278168,
+      "siid": 2,
+      "eiid": 1,
+      "params": [
+        {
+          "piid": 18,
+          "value": "4"
+        },
+        {
+          "piid": 25,
+          "value": "1792278168"
+        },
+        {
+          "piid": 28,
+          "value": "0"
+        },
+        {
+          "piid": 27,
+          "value": "-10800"
+        }
+      ]
+    },
+    {
+      "timeZoneOffSet": -10800,
+      "ts": 1792278000,
+      "siid": 2,
+      "eiid": 3,
+      "params": [
+        {
+          "piid": 16,
+          "value": "2"
+        },
+        {
+          "piid": 8,
+          "value": "10"
+        },
+        {
+          "piid": 17,
+          "value": "1792278000"
+        },
+        {
+          "piid": 27,
+          "value": "-10800"
+        }
+      ]
+    },
+    {
+      "timeZoneOffSet": -10800,
+      "ts": 1792277656,
+      "siid": 2,
+      "eiid": 1,
+      "params": [
+        {
+          "piid": 18,
+          "value": "4"
+        },
+        {
+          "piid": 25,
+          "value": "1792277656"
+        },
+        {
+          "piid": 28,
+          "value": "0"
+        },
+        {
+          "piid": 27,
+          "value": "-10800"
+        }
+      ]
+    },
+    {
+      "timeZoneOffSet": -10800,
+      "ts": 1792265336,
+      "siid": 2,
+      "eiid": 1,
+      "params": [
+        {
+          "piid": 18,
+          "value": "4"
+        },
+        {
+          "piid": 25,
+          "value": "1792265336"
+        },
+        {
+          "piid": 28,
+          "value": "0"
+        },
+        {
+          "piid": 27,
+          "value": "-10800"
+        }
+      ]
+    },
+    {
+      "timeZoneOffSet": -10800,
+      "ts": 1792264804,
+      "siid": 2,
+      "eiid": 1,
+      "params": [
+        {
+          "piid": 18,
+          "value": "5"
+        },
+        {
+          "piid": 25,
+          "value": "1792264804"
+        },
+        {
+          "piid": 28,
+          "value": "0"
+        },
+        {
+          "piid": 27,
+          "value": "-10800"
+        }
+      ]
+    },
+    {
+      "timeZoneOffSet": -10800,
+      "ts": 1792263600,
+      "siid": 2,
+      "eiid": 3,
+      "params": [
+        {
+          "piid": 16,
+          "value": "2"
+        },
+        {
+          "piid": 8,
+          "value": "10"
+        },
+        {
+          "piid": 17,
+          "value": "1792263600"
+        },
+        {
+          "piid": 27,
+          "value": "-10800"
+        }
+      ]
+    },
+    {
+      "timeZoneOffSet": -10800,
+      "ts": 1792253469,
+      "siid": 2,
+      "eiid": 1,
+      "params": [
+        {
+          "piid": 18,
+          "value": "4"
+        },
+        {
+          "piid": 25,
+          "value": "1792253469"
+        },
+        {
+          "piid": 28,
+          "value": "0"
+        },
+        {
+          "piid": 27,
+          "value": "-10800"
+        }
+      ]
+    },
+    {
+      "timeZoneOffSet": -10800,
+      "ts": 1792242523,
+      "siid": 2,
+      "eiid": 1,
+      "params": [
+        {
+          "piid": 18,
+          "value": "4"
+        },
+        {
+          "piid": 25,
+          "value": "1792242523"
+        },
+        {
+          "piid": 28,
+          "value": "0"
+        },
+        {
+          "piid": 27,
+          "value": "-10800"
+        }
+      ]
+    },
+    {
+      "timeZoneOffSet": -10800,
+      "ts": 1792242000,
+      "siid": 2,
+      "eiid": 3,
+      "params": [
+        {
+          "piid": 16,
+          "value": "2"
+        },
+        {
+          "piid": 8,
+          "value": "10"
+        },
+        {
+          "piid": 17,
+          "value": "1792242000"
+        },
+        {
+          "piid": 27,
+          "value": "-10800"
+        }
+      ]
+    },
+    {
+      "timeZoneOffSet": -10800,
+      "ts": 1792230443,
+      "siid": 2,
+      "eiid": 1,
+      "params": [
+        {
+          "piid": 18,
+          "value": "4"
+        },
+        {
+          "piid": 25,
+          "value": "1792230443"
+        },
+        {
+          "piid": 28,
+          "value": "0"
+        },
+        {
+          "piid": 27,
+          "value": "-10800"
+        }
+      ]
+    },
+    {
+      "timeZoneOffSet": -10800,
+      "ts": 1792227793,
+      "siid": 2,
+      "eiid": 1,
+      "params": [
+        {
+          "piid": 18,
+          "value": "4"
+        },
+        {
+          "piid": 25,
+          "value": "1792227793"
+        },
+        {
+          "piid": 28,
+          "value": "0"
+        },
+        {
+          "piid": 27,
+          "value": "-10800"
+        }
+      ]
+    },
+    {
+      "timeZoneOffSet": -10800,
+      "ts": 1792227600,
+      "siid": 2,
+      "eiid": 3,
+      "params": [
+        {
+          "piid": 16,
+          "value": "2"
+        },
+        {
+          "piid": 8,
+          "value": "10"
+        },
+        {
+          "piid": 17,
+          "value": "1792227600"
+        },
+        {
+          "piid": 27,
+          "value": "-10800"
+        }
+      ]
+    },
+    {
+      "timeZoneOffSet": -10800,
+      "ts": 1792224540,
+      "siid": 2,
+      "eiid": 1,
+      "params": [
+        {
+          "piid": 18,
+          "value": "4"
+        },
+        {
+          "piid": 25,
+          "value": "1792224540"
+        },
+        {
+          "piid": 28,
+          "value": "0"
+        },
+        {
+          "piid": 27,
+          "value": "-10800"
+        }
+      ]
+    },
+    {
+      "timeZoneOffSet": -10800,
+      "ts": 1792201955,
+      "siid": 2,
+      "eiid": 1,
+      "params": [
+        {
+          "piid": 18,
+          "value": "4"
+        },
+        {
+          "piid": 25,
+          "value": "1792201955"
+        },
+        {
+          "piid": 28,
+          "value": "0"
+        },
+        {
+          "piid": 27,
+          "value": "-10800"
+        }
+      ]
+    },
+    {
+      "timeZoneOffSet": -10800,
+      "ts": 1792192896,
+      "siid": 2,
+      "eiid": 1,
+      "params": [
+        {
+          "piid": 18,
+          "value": "4"
+        },
+        {
+          "piid": 25,
+          "value": "1792192896"
+        },
+        {
+          "piid": 28,
+          "value": "0"
+        },
+        {
+          "piid": 27,
+          "value": "-10800"
+        }
+      ]
+    },
+    {
+      "timeZoneOffSet": -10800,
+      "ts": 1792191600,
+      "siid": 2,
+      "eiid": 3,
+      "params": [
+        {
+          "piid": 16,
+          "value": "2"
+        },
+        {
+          "piid": 8,
+          "value": "10"
+        },
+        {
+          "piid": 17,
+          "value": "1792191600"
+        },
+        {
+          "piid": 27,
+          "value": "-10800"
+        }
+      ]
+    },
+    {
+      "timeZoneOffSet": -10800,
+      "ts": 1792188561,
+      "siid": 2,
+      "eiid": 1,
+      "params": [
+        {
+          "piid": 18,
+          "value": "4"
+        },
+        {
+          "piid": 25,
+          "value": "1792188561"
+        },
+        {
+          "piid": 28,
+          "value": "0"
+        },
+        {
+          "piid": 27,
+          "value": "-10800"
+        }
+      ]
+    },
+    {
+      "timeZoneOffSet": -10800,
+      "ts": 1792186595,
+      "siid": 2,
+      "eiid": 1,
+      "params": [
+        {
+          "piid": 18,
+          "value": "4"
+        },
+        {
+          "piid": 25,
+          "value": "1792186595"
+        },
+        {
+          "piid": 28,
+          "value": "0"
+        },
+        {
+          "piid": 27,
+          "value": "-10800"
+        }
+      ]
+    },
+    {
+      "timeZoneOffSet": -10800,
+      "ts": 1792184767,
+      "siid": 2,
+      "eiid": 1,
+      "params": [
+        {
+          "piid": 18,
+          "value": "4"
+        },
+        {
+          "piid": 25,
+          "value": "1792184767"
+        },
+        {
+          "piid": 28,
+          "value": "0"
+        },
+        {
+          "piid": 27,
+          "value": "-10800"
+        }
+      ]
+    },
+    {
+      "timeZoneOffSet": -10800,
+      "ts": 1792180395,
+      "siid": 2,
+      "eiid": 1,
+      "params": [
+        {
+          "piid": 18,
+          "value": "5"
+        },
+        {
+          "piid": 25,
+          "value": "1792180395"
+        },
+        {
+          "piid": 28,
+          "value": "0"
+        },
+        {
+          "piid": 27,
+          "value": "-10800"
+        }
+      ]
+    },
+    {
+      "timeZoneOffSet": -10800,
+      "ts": 1792177200,
+      "siid": 2,
+      "eiid": 3,
+      "params": [
+        {
+          "piid": 16,
+          "value": "2"
+        },
+        {
+          "piid": 8,
+          "value": "10"
+        },
+        {
+          "piid": 17,
+          "value": "1792177200"
+        },
+        {
+          "piid": 27,
+          "value": "-10800"
+        }
+      ]
+    },
+    {
+      "timeZoneOffSet": -10800,
+      "ts": 1792171578,
+      "siid": 2,
+      "eiid": 1,
+      "params": [
+        {
+          "piid": 18,
+          "value": "4"
+        },
+        {
+          "piid": 25,
+          "value": "1792171578"
+        },
+        {
+          "piid": 28,
+          "value": "0"
+        },
+        {
+          "piid": 27,
+          "value": "-10800"
+        }
+      ]
+    },
+    {
+      "timeZoneOffSet": -10800,
+      "ts": 1792171394,
+      "siid": 2,
+      "eiid": 3,
+      "params": [
+        {
+          "piid": 16,
+          "value": "0"
+        },
+        {
+          "piid": 8,
+          "value": "10"
+        },
+        {
+          "piid": 17,
+          "value": "1792171394"
+        },
+        {
+          "piid": 27,
+          "value": "-10800"
+        }
+      ]
+    },
+    {
+      "timeZoneOffSet": -10800,
+      "ts": 1792157521,
+      "siid": 2,
+      "eiid": 1,
+      "params": [
+        {
+          "piid": 18,
+          "value": "4"
+        },
+        {
+          "piid": 25,
+          "value": "1792157521"
+        },
+        {
+          "piid": 28,
+          "value": "0"
+        },
+        {
+          "piid": 27,
+          "value": "-10800"
+        }
+      ]
+    }
+  ]
+}

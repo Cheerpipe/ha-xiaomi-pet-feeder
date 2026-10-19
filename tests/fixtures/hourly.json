@@ -1,0 +1,24 @@
+{
+  "code": 0,
+  "message": "sucess",
+  "data": null,
+  "result": {
+    "hourlyEatFoodRecords": [
+      {
+        "hour": 1,
+        "param": "4"
+      },
+      {
+        "hour": 6,
+        "param": "8"
+      }
+    ],
+    "hourlyOutFoodRecords": [
+      {
+        "hour": 6,
+        "param": "10"
+      }
+    ],
+    "lowEatFoodParam": null
+  }
+}

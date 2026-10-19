@@ -1,0 +1,124 @@
+dispense:
+  fields:
+    device_id:
+      required: true
+      selector:
+        device:
+          integration: xiaomi_pet_feeder
+    portions:
+      required: true
+      default: 1
+      selector:
+        number:
+          min: 1
+          max: 15
+          mode: box
+
+set_schedule:
+  fields:
+    device_id:
+      required: true
+      selector:
+        device:
+          integration: xiaomi_pet_feeder
+    entries:
+      required: true
+      example: '[{"time": "08:00", "portions": 2}, {"time": "18:00", "portions": 2}]'
+      selector:
+        object:
+    auto_feed:
+      selector:
+        boolean:
+
+add_schedule_entry:
+  fields:
+    device_id:
+      required: true
+      selector:
+        device:
+          integration: xiaomi_pet_feeder
+    time:
+      required: true
+      selector:
+        time:
+    portions:
+      required: true
+      default: 1
+      selector:
+        number:
+          min: 1
+          max: 15
+          mode: box
+
+remove_schedule_entry:
+  fields:
+    device_id:
+      required: true
+      selector:
+        device:
+          integration: xiaomi_pet_feeder
+    time:
+      required: true
+      selector:
+        time:
+
+set_schedule_entry_today:
+  fields:
+    device_id:
+      required: true
+      selector:
+        device:
+          integration: xiaomi_pet_feeder
+    time:
+      required: true
+      selector:
+        time:
+    enabled:
+      required: true
+      selector:
+        boolean:
+
+get_schedule:
+  fields:
+    device_id:
+      required: true
+      selector:
+        device:
+          integration: xiaomi_pet_feeder
+
+get_feeding_history:
+  fields:
+    device_id:
+      required: true
+      selector:
+        device:
+          integration: xiaomi_pet_feeder
+    days:
+      default: 1
+      selector:
+        number:
+          min: 1
+          max: 90
+          mode: box
+
+get_hourly_stats:
+  fields:
+    device_id:
+      required: true
+      selector:
+        device:
+          integration: xiaomi_pet_feeder
+    date:
+      selector:
+        date:
+
+get_daily_stats:
+  fields:
+    device_id:
+      required: true
+      selector:
+        device:
+          integration: xiaomi_pet_feeder
+    date:
+      selector:
+        date:

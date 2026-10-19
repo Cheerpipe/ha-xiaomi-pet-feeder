@@ -1,0 +1,65 @@
+"""Async client for the Xiaomi cloud APIs used by the Smart Pet Food Feeder 2."""
+
+from .auth import QrChallenge, XiaomiAuthenticator, XiaomiCredentials, new_client_id
+from .client import SERVERS, XiaomiCloudClient
+from .exceptions import (
+    XiaomiApiError,
+    XiaomiAuthError,
+    XiaomiBlocked,
+    XiaomiCaptchaRequired,
+    XiaomiConnectionError,
+    XiaomiDeviceError,
+    XiaomiError,
+    XiaomiInvalidCredentials,
+    XiaomiVerificationFailed,
+    XiaomiVerificationRequired,
+)
+from .feeder import (
+    SUPPORTED_MODELS,
+    Action,
+    Desiccant,
+    DesiccantState,
+    FeederApi,
+    FeederStatus,
+    FeedRecord,
+    FeedResult,
+    FeedSource,
+    Prop,
+    device_midnight,
+    device_now,
+)
+from .schedule import FeedingSchedule, ScheduleEntry, ScheduleError
+
+__all__ = [
+    "SERVERS",
+    "SUPPORTED_MODELS",
+    "Action",
+    "Desiccant",
+    "DesiccantState",
+    "FeedRecord",
+    "FeedResult",
+    "FeedSource",
+    "FeederApi",
+    "FeederStatus",
+    "FeedingSchedule",
+    "Prop",
+    "QrChallenge",
+    "ScheduleEntry",
+    "ScheduleError",
+    "XiaomiApiError",
+    "XiaomiAuthError",
+    "XiaomiAuthenticator",
+    "XiaomiBlocked",
+    "XiaomiCaptchaRequired",
+    "XiaomiCloudClient",
+    "XiaomiConnectionError",
+    "XiaomiCredentials",
+    "XiaomiDeviceError",
+    "XiaomiError",
+    "XiaomiInvalidCredentials",
+    "XiaomiVerificationFailed",
+    "XiaomiVerificationRequired",
+    "device_midnight",
+    "device_now",
+    "new_client_id",
+]

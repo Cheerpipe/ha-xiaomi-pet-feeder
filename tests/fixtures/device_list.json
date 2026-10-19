@@ -1,0 +1,48 @@
+{
+  "code": 0,
+  "message": "ok",
+  "result": {
+    "list": [
+      {
+        "did": "100000081",
+        "uid": 1000000001,
+        "name": "<dev_82>",
+        "model": "xiaomi.feeder.iv2001",
+        "isOnline": true,
+        "extra": {
+          "isSetPincode": 0,
+          "pincodeType": 0,
+          "fw_version": "2.2.3_0027",
+          "needVerifyCode": 0,
+          "isPasswordEncrypt": 0
+        },
+        "pid": "0",
+        "desc": "Dispositivo en línea "
+      },
+      {
+        "did": "999",
+        "uid": 1000000001,
+        "name": "Lamp",
+        "model": "yeelink.light.lamp1",
+        "isOnline": true
+      }
+    ],
+    "virtualModels": [
+      {
+        "model": "zhimi.airpurifier.m1",
+        "state": 0,
+        "url": ""
+      },
+      {
+        "model": "yunmi.waterpurifier.v2",
+        "state": 0,
+        "url": ""
+      },
+      {
+        "model": "zimi.powerstrip.v2",
+        "state": 0,
+        "url": ""
+      }
+    ]
+  }
+}

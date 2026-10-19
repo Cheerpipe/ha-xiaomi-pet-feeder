@@ -1,0 +1,84 @@
+{
+  "code": 0,
+  "message": "ok",
+  "result": {
+    "items": [
+      {
+        "consumes_data": [
+          {
+            "details": [
+              {
+                "id": 2956,
+                "description": "Cartucho desecante para comedero de mascotas 2",
+                "value": "0",
+                "update_time": 1792378803,
+                "state": 4,
+                "inadeq": "{\"val\":\"10\",\"unit\":\"percentage\",\"type\":\"range\"}",
+                "exhaust": "{\"val\":\"0\",\"unit\":\"percentage\",\"type\":\"range\"}",
+                "extra_url": "",
+                "left_time": "0",
+                "total_life": "720",
+                "prop": "prop.6.1",
+                "consumable_type": "Cartucho desecante para comedero de mascotas 2",
+                "reset_method": "action.6.1",
+                "reset_state": 2,
+                "type_name": "",
+                "linkType": 0
+              }
+            ],
+            "is_ignore": false,
+            "name": "<dev_82>",
+            "did": "100000081",
+            "model": "xiaomi.feeder.iv2001",
+            "sub_class": "Feeder",
+            "is_online": true,
+            "time_stamp": 1792378803,
+            "room_id": "100000000149",
+            "room_create_time": 0,
+            "skip_rpc": false,
+            "ble_gateway": false,
+            "start_time": 1744731766
+          }
+        ]
+      },
+      {
+        "consumes_data": [
+          {
+            "details": [
+              {
+                "id": 2957,
+                "description": "Batería",
+                "value": "",
+                "update_time": 0,
+                "state": 2,
+                "inadeq": "{\"val\":\"1\",\"type\":\"boolean\"}",
+                "exhaust": "{}",
+                "extra_url": "",
+                "left_time": "",
+                "total_life": "336",
+                "prop": "prop.4.1",
+                "consumable_type": "4 pilas alcalinas AA",
+                "reset_method": "",
+                "reset_state": 0,
+                "type_name": "battery",
+                "linkType": 0
+              }
+            ],
+            "is_ignore": false,
+            "name": "<dev_82>",
+            "did": "100000081",
+            "model": "xiaomi.feeder.iv2001",
+            "sub_class": "Feeder",
+            "is_online": true,
+            "time_stamp": 0,
+            "room_id": "100000000149",
+            "room_create_time": 0,
+            "skip_rpc": false,
+            "ble_gateway": false,
+            "start_time": 1744731766
+          }
+        ]
+      }
+    ]
+  }
+}
