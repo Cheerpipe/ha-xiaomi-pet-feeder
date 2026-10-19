@@ -9,5 +9,5 @@
   "issue_tracker": "https://github.com/Cheerpipe/ha-xiaomi-pet-feeder/issues",
   "loggers": ["custom_components.xiaomi_pet_feeder"],
   "requirements": [],
-  "version": "0.0.1"
+  "version": "0.0.2"
 }
