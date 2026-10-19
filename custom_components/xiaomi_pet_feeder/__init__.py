@@ -20,9 +20,18 @@ from .api import (
     XiaomiCredentials,
     XiaomiError,
 )
-from .const import CONF_CLIENT_ID, CONF_CREDENTIALS, CONF_DEVICES, CONF_SERVER, DOMAIN
+from .const import (
+    CONF_CLIENT_ID,
+    CONF_CREDENTIALS,
+    CONF_DEVICES,
+    CONF_OFFICIAL_PUSH,
+    CONF_SERVER,
+    DEFAULT_OFFICIAL_PUSH,
+    DOMAIN,
+)
 from .coordinator import FeederRecordsCoordinator, FeederStatusCoordinator
 from .data import Feeder, XiaomiPetFeederConfigEntry, XiaomiPetFeederData
+from .push import OfficialEventListener
 from .services import async_setup_services
 
 _LOGGER = logging.getLogger(__name__)
@@ -108,6 +117,11 @@ async def async_setup_entry(hass: HomeAssistant, entry: XiaomiPetFeederConfigEnt
 
     entry.runtime_data = XiaomiPetFeederData(client=client, feeders=feeders)
     await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
+
+    if entry.options.get(CONF_OFFICIAL_PUSH, DEFAULT_OFFICIAL_PUSH):
+        for feeder in feeders.values():
+            feeder.push = OfficialEventListener(hass, feeder)
+            entry.async_on_unload(feeder.push.async_start())
     return True
 
 

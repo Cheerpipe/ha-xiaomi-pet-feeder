@@ -69,14 +69,17 @@
   "options": {
     "step": {
       "init": {
-        "title": "Update intervals",
+        "title": "Updates",
+        "description": "Real-time updates need the official Xiaomi Home integration with the same feeder. Found for {linked} of {total} feeders.",
         "data": {
           "status_interval": "Device status",
-          "records_interval": "Food eaten and feeding log"
+          "records_interval": "Food eaten and feeding log",
+          "official_push": "Real-time updates from Xiaomi Home"
         },
         "data_description": {
           "status_interval": "How often to read bowl weight, alerts and settings.",
-          "records_interval": "How often to ask Xiaomi's cloud for the food eaten today and the feeding log."
+          "records_interval": "How often to ask Xiaomi's cloud for the food eaten today and the feeding log.",
+          "official_push": "When the official Xiaomi Home integration reports a meal or a dispense, refresh right away instead of waiting for the next check. Polling keeps working as a fallback."
         }
       }
     }

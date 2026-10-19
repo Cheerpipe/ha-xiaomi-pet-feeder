@@ -97,9 +97,20 @@ Your password is used once and **never stored**. Home Assistant only keeps the s
   - "Food eaten today" and the feeding log are read every **5 minutes**.
   - The desiccant is read every 6 hours.
   - You can change the first two intervals under the integration's **Configure** button.
-- **There is no real-time push.** Xiaomi only offers push to its own official integration. Events (meal, dispense) can therefore show up a few minutes after they happen. Anything you trigger from Home Assistant is refreshed right away.
+- **No real-time push of its own.** Xiaomi only offers push to its own official integration. On its own, this integration can therefore show events (meal, dispense) a few minutes after they happen. If you also have the official integration, see [Real-time updates](#real-time-updates-optional). Anything you trigger from Home Assistant is refreshed right away.
 - **The feeder uploads meals after the pet walks away.** Even the app gets them with a short delay.
 - **These are undocumented Xiaomi APIs.** They work today, but Xiaomi can change them without notice. If something breaks, please open an issue with the integration's diagnostics attached. They are already redacted.
+
+## Real-time updates (optional)
+
+Xiaomi pushes device events in real time only to its official [Xiaomi Home](https://github.com/XiaoMi/ha_xiaomi_home) integration. If you also have it installed and it includes the same feeder, this integration uses that push:
+
+- It watches the official integration's event entities for the feeder: the meal event (`event.*_e_2_1`) and the dispense events (`event.*_e_2_3`, `event.*_e_2_5`).
+- When one of them fires, it refreshes "food eaten today", the feeding log and the status right away instead of waiting for the next check. It checks once more 20 seconds later, in case Xiaomi's cloud stores the record a little late.
+- It only reads the state of those entities. It never talks to the official integration's connection to Xiaomi, so the official entities keep working as before.
+- Polling keeps running as a fallback. If the official integration is removed or its entities are unavailable, nothing breaks; updates just go back to the polling intervals.
+
+It's **on by default** and does nothing until the official entities exist. It also picks them up if you install the official integration later. Turn it off under the integration's **Configure** button (*Real-time updates from Xiaomi Home*). That screen also tells you how many of your feeders were found in the official integration. If the count is 0, check that the feeder was added there and that its event entities are enabled.
 
 ## Troubleshooting
 
@@ -125,6 +136,7 @@ The tests replay real responses captured from a feeder (anonymized), covering:
 - every entity
 - the services
 - the config, reauth and options flows
+- the real-time updates from the official integration's entities
 
 ## Credits
 

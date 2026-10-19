@@ -95,9 +95,20 @@ La contraseña se usa una sola vez y **no se guarda**. Home Assistant solo conse
   - "Comida consumida hoy" y el registro, cada **5 minutos**.
   - El desecante, cada 6 horas.
   - Los dos primeros intervalos se cambian en el botón **Configurar** de la integración.
-- **No hay push en tiempo real.** Xiaomi solo ofrece push a su integración oficial. Por eso los eventos (comió, dispensó) pueden llegar unos minutos después. Lo que hagas desde Home Assistant se refresca al instante.
+- **No tiene push en tiempo real propio.** Xiaomi solo ofrece push a su integración oficial. Por sí sola, esta integración puede mostrar los eventos (comió, dispensó) unos minutos después. Si también tienes la integración oficial, mira [Actualizaciones en tiempo real](#actualizaciones-en-tiempo-real-opcional). Lo que hagas desde Home Assistant se refresca al instante.
 - **El comedero sube cada comida cuando la mascota se aleja.** Incluso la app las recibe con un pequeño retraso.
 - **Usa APIs no documentadas de Xiaomi.** Hoy funcionan, pero Xiaomi puede cambiarlas sin aviso. Si algo se rompe, abre un issue y adjunta los diagnósticos de la integración; ya vienen anonimizados.
+
+## Actualizaciones en tiempo real (opcional)
+
+Xiaomi envía los eventos del dispositivo en tiempo real solo a su integración oficial [Xiaomi Home](https://github.com/XiaoMi/ha_xiaomi_home). Si también la tienes instalada y en ella está el mismo comedero, esta integración aprovecha ese push:
+
+- Vigila las entidades de evento del comedero en la integración oficial: la de comida (`event.*_e_2_1`) y las de dispensación (`event.*_e_2_3`, `event.*_e_2_5`).
+- Cuando una se dispara, refresca al momento la comida consumida hoy, el registro y el estado, sin esperar a la siguiente consulta. Vuelve a mirar 20 segundos después por si la nube de Xiaomi guarda el registro con algo de retraso.
+- Solo lee el estado de esas entidades. Nunca toca la conexión de la integración oficial con Xiaomi, así que sus entidades siguen funcionando igual.
+- El polling sigue activo como respaldo. Si quitas la integración oficial o sus entidades no están disponibles, no se rompe nada; simplemente se vuelve a los intervalos de consulta.
+
+Viene **activado por defecto** y no hace nada hasta que existan las entidades oficiales. Si instalas la integración oficial más tarde, también las detecta. Se desactiva en el botón **Configurar** de la integración (*Actualizaciones en tiempo real desde Xiaomi Home*). Esa pantalla también indica cuántos de tus comederos se encontraron en la integración oficial. Si sale 0, revisa que el comedero esté añadido allí y que sus entidades de evento estén activadas.
 
 ## Problemas frecuentes
 

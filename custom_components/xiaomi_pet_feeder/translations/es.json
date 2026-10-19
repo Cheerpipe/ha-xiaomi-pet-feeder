@@ -69,14 +69,17 @@
   "options": {
     "step": {
       "init": {
-        "title": "Frecuencia de actualización",
+        "title": "Actualizaciones",
+        "description": "Las actualizaciones en tiempo real necesitan la integración oficial Xiaomi Home con el mismo comedero. Encontrado en {linked} de {total} comederos.",
         "data": {
           "status_interval": "Estado del comedero",
-          "records_interval": "Comida consumida y registro"
+          "records_interval": "Comida consumida y registro",
+          "official_push": "Actualizaciones en tiempo real desde Xiaomi Home"
         },
         "data_description": {
           "status_interval": "Cada cuánto se lee el peso del cuenco, las alertas y los ajustes.",
-          "records_interval": "Cada cuánto se pide a la nube de Xiaomi la comida consumida hoy y el registro de alimentación."
+          "records_interval": "Cada cuánto se pide a la nube de Xiaomi la comida consumida hoy y el registro de alimentación.",
+          "official_push": "Cuando la integración oficial Xiaomi Home informa una comida o una dispensación, se refresca al momento en vez de esperar a la siguiente consulta. El polling sigue funcionando como respaldo."
         }
       }
     }

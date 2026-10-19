@@ -45,6 +45,7 @@ async def async_get_config_entry_diagnostics(
                 "desiccant": repr(records.desiccant) if records else None,
                 "status_update_ok": feeder.status.last_update_success,
                 "records_update_ok": feeder.records.last_update_success,
+                "official_events": len(feeder.push.entity_ids) if feeder.push else None,
             }
         )
     return {

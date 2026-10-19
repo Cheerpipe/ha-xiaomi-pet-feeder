@@ -21,6 +21,7 @@ from homeassistant.const import CONF_PASSWORD, CONF_USERNAME
 from homeassistant.core import callback
 from homeassistant.helpers.aiohttp_client import async_create_clientsession, async_get_clientsession
 from homeassistant.helpers.selector import (
+    BooleanSelector,
     NumberSelector,
     NumberSelectorConfig,
     NumberSelectorMode,
@@ -56,15 +57,18 @@ from .const import (
     CONF_CREDENTIALS,
     CONF_DEVICES,
     CONF_LOGIN_METHOD,
+    CONF_OFFICIAL_PUSH,
     CONF_RECORDS_INTERVAL,
     CONF_SERVER,
     CONF_STATUS_INTERVAL,
+    DEFAULT_OFFICIAL_PUSH,
     DEFAULT_RECORDS_INTERVAL,
     DEFAULT_STATUS_INTERVAL,
     DOMAIN,
     SERVER_NAMES,
 )
 from .data import XiaomiPetFeederConfigEntry
+from .push import official_event_entities
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -414,15 +418,24 @@ class XiaomiPetFeederConfigFlow(ConfigFlow, domain=DOMAIN):
 
 
 class OptionsFlowHandler(OptionsFlowWithReload):
-    """Polling intervals."""
+    """Polling intervals and real-time updates."""
 
     async def async_step_init(self, user_input: dict[str, Any] | None = None) -> ConfigFlowResult:
         """Manage the options."""
         if user_input is not None:
-            return self.async_create_entry(data={k: int(v) for k, v in user_input.items()})
+            return self.async_create_entry(
+                data={
+                    CONF_STATUS_INTERVAL: int(user_input[CONF_STATUS_INTERVAL]),
+                    CONF_RECORDS_INTERVAL: int(user_input[CONF_RECORDS_INTERVAL]),
+                    CONF_OFFICIAL_PUSH: bool(user_input[CONF_OFFICIAL_PUSH]),
+                }
+            )
         options = self.config_entry.options
+        dids = [str(d["did"]) for d in self.config_entry.data[CONF_DEVICES]]
+        linked = sum(1 for did in dids if official_event_entities(self.hass, did))
         return self.async_show_form(
             step_id="init",
+            description_placeholders={"linked": str(linked), "total": str(len(dids))},
             data_schema=vol.Schema(
                 {
                     vol.Required(
@@ -449,6 +462,10 @@ class OptionsFlowHandler(OptionsFlowWithReload):
                             mode=NumberSelectorMode.BOX,
                         )
                     ),
+                    vol.Required(
+                        CONF_OFFICIAL_PUSH,
+                        default=options.get(CONF_OFFICIAL_PUSH, DEFAULT_OFFICIAL_PUSH),
+                    ): BooleanSelector(),
                 }
             ),
         )

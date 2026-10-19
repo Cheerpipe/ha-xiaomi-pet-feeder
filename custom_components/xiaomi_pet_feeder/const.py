@@ -16,9 +16,11 @@ CONF_LOGIN_METHOD: Final = "login_method"
 
 CONF_STATUS_INTERVAL: Final = "status_interval"
 CONF_RECORDS_INTERVAL: Final = "records_interval"
+CONF_OFFICIAL_PUSH: Final = "official_push"
 
 DEFAULT_STATUS_INTERVAL: Final = 30
 DEFAULT_RECORDS_INTERVAL: Final = 300
+DEFAULT_OFFICIAL_PUSH: Final = True
 CONSUMABLES_INTERVAL: Final = timedelta(hours=6)
 
 SERVER_NAMES: Final = {

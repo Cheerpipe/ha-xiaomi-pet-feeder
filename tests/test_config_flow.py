@@ -20,6 +20,7 @@ from custom_components.xiaomi_pet_feeder.api import (
 from custom_components.xiaomi_pet_feeder.const import (
     CONF_CREDENTIALS,
     CONF_DEVICES,
+    CONF_OFFICIAL_PUSH,
     CONF_RECORDS_INTERVAL,
     CONF_STATUS_INTERVAL,
     DOMAIN,
@@ -208,11 +209,15 @@ async def test_reconfigure_devices(
 
 
 async def test_options(hass: HomeAssistant, entry: MockConfigEntry) -> None:
-    """Polling intervals are configurable."""
+    """Polling intervals are configurable; real-time updates are on by default."""
     entry.add_to_hass(hass)
     result = await hass.config_entries.options.async_init(entry.entry_id)
     result = await hass.config_entries.options.async_configure(
         result["flow_id"], {CONF_STATUS_INTERVAL: 60, CONF_RECORDS_INTERVAL: 600}
     )
     assert result["type"] is FlowResultType.CREATE_ENTRY
-    assert entry.options == {CONF_STATUS_INTERVAL: 60, CONF_RECORDS_INTERVAL: 600}
+    assert entry.options == {
+        CONF_STATUS_INTERVAL: 60,
+        CONF_RECORDS_INTERVAL: 600,
+        CONF_OFFICIAL_PUSH: True,
+    }
