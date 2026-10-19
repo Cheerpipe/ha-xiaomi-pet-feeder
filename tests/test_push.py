@@ -6,11 +6,15 @@ from datetime import timedelta
 
 from homeassistant.config_entries import ConfigEntryState
 from homeassistant.const import STATE_UNAVAILABLE, STATE_UNKNOWN
-from homeassistant.core import HomeAssistant
+from homeassistant.core import HomeAssistant, State
 from homeassistant.data_entry_flow import FlowResultType
 from homeassistant.helpers import device_registry as dr, entity_registry as er
 from homeassistant.util import dt as dt_util
-from pytest_homeassistant_custom_component.common import MockConfigEntry, async_fire_time_changed
+from pytest_homeassistant_custom_component.common import (
+    MockConfigEntry,
+    async_fire_time_changed,
+    mock_restore_cache_with_extra_data,
+)
 from pytest_homeassistant_custom_component.components.diagnostics import (
     get_diagnostics_for_config_entry,
 )
@@ -246,3 +250,92 @@ async def test_options_show_linked_feeders(hass: HomeAssistant, entry: MockConfi
     )
     assert result["type"] is FlowResultType.CREATE_ENTRY
     assert entry.options[CONF_OFFICIAL_PUSH] is False
+
+
+def sensor(hass: HomeAssistant, key: str) -> State:
+    """State of one of our sensors."""
+    entity_id = er.async_get(hass).async_get_entity_id("sensor", DOMAIN, f"{DID}_{key}")
+    assert entity_id, key
+    return hass.states.get(entity_id)
+
+
+async def test_update_mode_sensors(
+    hass: HomeAssistant, entry: MockConfigEntry, cloud: FakeCloud
+) -> None:
+    """The sensors tell whether push works and when the last event arrived."""
+    entity_ids = add_official(hass)
+    for entity_id in entity_ids:
+        hass.states.async_set(entity_id, T1)
+    await setup(hass, entry)
+
+    mode = sensor(hass, "update_mode")
+    assert mode.state == "push"
+    assert mode.attributes["push_enabled"] is True
+    assert mode.attributes["official_entities"] == sorted(entity_ids)
+    assert sensor(hass, "last_push").state == STATE_UNKNOWN
+
+    now = dt_util.utcnow()
+    await push(hass, entity_ids[0], T2)
+    last = dt_util.parse_datetime(sensor(hass, "last_push").state)
+    assert last is not None
+    assert abs((last - now).total_seconds()) < 5
+
+    # The official integration goes offline: back to polling.
+    for entity_id in entity_ids:
+        await push(hass, entity_id, STATE_UNAVAILABLE)
+    assert sensor(hass, "update_mode").state == "polling"
+    await push(hass, entity_ids[1], T1)
+    assert sensor(hass, "update_mode").state == "push"
+
+
+async def test_update_mode_without_official(
+    hass: HomeAssistant, entry: MockConfigEntry, cloud: FakeCloud
+) -> None:
+    """Polling until the official integration adds the feeder and its entities load."""
+    await setup(hass, entry)
+    assert sensor(hass, "update_mode").state == "polling"
+    assert sensor(hass, "update_mode").attributes["official_entities"] == []
+
+    meal_done, *_ = add_official(hass)
+    await hass.async_block_till_done()
+    assert sensor(hass, "update_mode").state == "polling"  # registered, not loaded yet
+    await push(hass, meal_done, T1)
+    assert sensor(hass, "update_mode").state == "push"
+
+
+async def test_update_mode_option_off(
+    hass: HomeAssistant, entry: MockConfigEntry, cloud: FakeCloud
+) -> None:
+    """With the option off it always says polling."""
+    meal_done, *_ = add_official(hass)
+    hass.states.async_set(meal_done, T1)
+    entry.add_to_hass(hass)
+    hass.config_entries.async_update_entry(entry, options={CONF_OFFICIAL_PUSH: False})
+    assert await hass.config_entries.async_setup(entry.entry_id)
+    await hass.async_block_till_done()
+    mode = sensor(hass, "update_mode")
+    assert mode.state == "polling"
+    assert mode.attributes["push_enabled"] is False
+
+
+async def test_last_push_is_restored(
+    hass: HomeAssistant, entry: MockConfigEntry, cloud: FakeCloud
+) -> None:
+    """The time of the last push survives a restart."""
+    er.async_get(hass).async_get_or_create(
+        "sensor", DOMAIN, f"{DID}_last_push", suggested_object_id="feeder_last_push"
+    )
+    mock_restore_cache_with_extra_data(
+        hass,
+        [
+            (
+                State("sensor.feeder_last_push", T1),
+                {
+                    "native_value": {"__type": "<class 'datetime.datetime'>", "isoformat": T1},
+                    "native_unit_of_measurement": None,
+                },
+            )
+        ],
+    )
+    await setup(hass, entry)
+    assert sensor(hass, "last_push").state == "2026-10-19T08:00:00+00:00"

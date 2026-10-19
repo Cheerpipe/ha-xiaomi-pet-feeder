@@ -4,9 +4,11 @@ from __future__ import annotations
 
 from collections.abc import Callable
 from dataclasses import dataclass
+from datetime import datetime
 from typing import Any
 
 from homeassistant.components.sensor import (
+    RestoreSensor,
     SensorDeviceClass,
     SensorEntity,
     SensorEntityDescription,
@@ -19,7 +21,7 @@ from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
 from .api import DesiccantState, FeederStatus, Prop
 from .coordinator import FeederRecords
 from .data import Feeder, XiaomiPetFeederConfigEntry
-from .entity import FeederRecordsEntity, FeederStatusEntity
+from .entity import FeederRecordsEntity, FeederStatusEntity, device_info
 
 PARALLEL_UPDATES = 0
 
@@ -112,6 +114,8 @@ async def async_setup_entry(
                 EatenTodaySensor(feeder),
                 FeedingLogSensor(feeder),
                 DesiccantSensor(feeder),
+                UpdateModeSensor(feeder),
+                LastPushSensor(feeder),
             ]
         )
     async_add_entities(entities)
@@ -215,3 +219,76 @@ class DesiccantSensor(FeederRecordsEntity, SensorEntity):
             if desiccant.total_hours is None
             else round(desiccant.total_hours / 24, 1),
         }
+
+
+class FeederPushSensor(SensorEntity):
+    """Diagnostic sensor that follows the real-time updates from Xiaomi Home."""
+
+    _attr_has_entity_name = True
+    _attr_should_poll = False
+    _attr_entity_category = EntityCategory.DIAGNOSTIC
+
+    def __init__(self, feeder: Feeder, key: str) -> None:
+        """Initialize."""
+        self.feeder = feeder
+        self._attr_unique_id = f"{feeder.did}_{key}"
+        self._attr_device_info = device_info(feeder)
+
+    async def async_added_to_hass(self) -> None:
+        """Follow the listener of the official event entities."""
+        await super().async_added_to_hass()
+        if self.feeder.push is not None:
+            self.async_on_remove(self.feeder.push.async_add_listener(self.async_write_ha_state))
+
+
+class UpdateModeSensor(FeederPushSensor):
+    """Push when the official integration's events are available, polling otherwise."""
+
+    _attr_translation_key = "update_mode"
+    _attr_device_class = SensorDeviceClass.ENUM
+    _attr_options = ["push", "polling"]
+
+    def __init__(self, feeder: Feeder) -> None:
+        """Initialize."""
+        super().__init__(feeder, "update_mode")
+
+    @property
+    def native_value(self) -> str:
+        """Current mode."""
+        push = self.feeder.push
+        return "push" if push is not None and push.active else "polling"
+
+    @property
+    def extra_state_attributes(self) -> dict[str, Any]:
+        """Which official event entities are followed."""
+        push = self.feeder.push
+        return {
+            "push_enabled": push is not None,
+            "official_entities": list(push.entity_ids) if push else [],
+        }
+
+
+class LastPushSensor(FeederPushSensor, RestoreSensor):
+    """When the last event pushed by the official integration was received."""
+
+    _attr_translation_key = "last_push"
+    _attr_device_class = SensorDeviceClass.TIMESTAMP
+
+    def __init__(self, feeder: Feeder) -> None:
+        """Initialize."""
+        super().__init__(feeder, "last_push")
+        self._restored: datetime | None = None
+
+    async def async_added_to_hass(self) -> None:
+        """Keep the last value across restarts."""
+        await super().async_added_to_hass()
+        if (last := await self.async_get_last_sensor_data()) is not None and isinstance(
+            last.native_value, datetime
+        ):
+            self._restored = last.native_value
+
+    @property
+    def native_value(self) -> datetime | None:
+        """Time of the last pushed event."""
+        push = self.feeder.push
+        return (push.last_push if push else None) or self._restored

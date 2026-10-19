@@ -110,6 +110,14 @@ Xiaomi envía los eventos del dispositivo en tiempo real solo a su integración 
 
 Viene **activado por defecto** y no hace nada hasta que existan las entidades oficiales. Si instalas la integración oficial más tarde, también las detecta. Se desactiva en el botón **Configurar** de la integración (*Actualizaciones en tiempo real desde Xiaomi Home*). Esa pantalla también indica cuántos de tus comederos se encontraron en la integración oficial. Si sale 0, revisa que el comedero esté añadido allí y que sus entidades de evento estén activadas.
 
+Para comprobar que funciona, mira dos sensores de diagnóstico en la página del dispositivo:
+
+- **Modo de actualización**:
+  - `Push (tiempo real)` cuando encontró las entidades de evento oficiales y están disponibles.
+  - `Consulta periódica (polling)` en caso contrario.
+  - Sus atributos muestran qué entidades oficiales sigue.
+- **Última actualización en tiempo real**: cuándo llegó el último evento enviado por la integración oficial. Cuando el comedero dispense o la mascota coma, debería mostrar la hora en segundos. Si sigue vacío mientras *Modo de actualización* dice push, abre un issue con los diagnósticos.
+
 ## Problemas frecuentes
 
 - **"No se encontró ningún Smart Pet Food Feeder 2"**: la región no es la correcta. Prueba otra.

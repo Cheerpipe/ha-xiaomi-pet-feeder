@@ -11,7 +11,8 @@ single handler per event, so it would silently steal the events from the officia
 
 from __future__ import annotations
 
-from datetime import timedelta
+from collections.abc import Callable
+from datetime import datetime, timedelta
 import logging
 from typing import TYPE_CHECKING
 
@@ -19,7 +20,7 @@ from homeassistant.const import STATE_UNAVAILABLE, STATE_UNKNOWN, Platform
 from homeassistant.core import CALLBACK_TYPE, Event, EventStateChangedData, HomeAssistant, callback
 from homeassistant.helpers import device_registry as dr, entity_registry as er
 from homeassistant.helpers.event import async_track_state_change_event
-from homeassistant.util import slugify
+from homeassistant.util import dt as dt_util, slugify
 
 from .api import SUPPORTED_MODELS
 
@@ -79,8 +80,30 @@ class OfficialEventListener:
         self._hass = hass
         self._feeder = feeder
         self.entity_ids: list[str] = []
+        self.last_push: datetime | None = None
         self._last: dict[str, str] = {}
         self._unsub_state: CALLBACK_TYPE | None = None
+        self._listeners: set[Callable[[], None]] = set()
+
+    @property
+    def active(self) -> bool:
+        """Whether at least one official event entity is there and available."""
+        return any(
+            (state := self._hass.states.get(entity_id)) is not None
+            and state.state != STATE_UNAVAILABLE
+            for entity_id in self.entity_ids
+        )
+
+    @callback
+    def async_add_listener(self, update: Callable[[], None]) -> CALLBACK_TYPE:
+        """Call ``update`` whenever the push state changes."""
+        self._listeners.add(update)
+        return lambda: self._listeners.discard(update)
+
+    @callback
+    def _notify(self) -> None:
+        for update in list(self._listeners):
+            update()
 
     @callback
     def async_start(self) -> CALLBACK_TYPE:
@@ -116,6 +139,7 @@ class OfficialEventListener:
             self._unsub_state = async_track_state_change_event(
                 self._hass, entity_ids, self._state_changed
             )
+        self._notify()
 
     @callback
     def _untrack(self) -> None:
@@ -145,6 +169,7 @@ class OfficialEventListener:
     @callback
     def _state_changed(self, event: Event[EventStateChangedData]) -> None:
         old, new = event.data["old_state"], event.data["new_state"]
+        self._notify()  # availability may have changed
         if new is None or new.state in _NO_EVENT:
             return
         # An event entity's state is the time of its last event. Being added, restored or
@@ -154,6 +179,8 @@ class OfficialEventListener:
         if old is None or old.state == STATE_UNAVAILABLE or new.state == last:
             return
         _LOGGER.debug("%s: event pushed by %s", self._feeder.name, new.entity_id)
+        self.last_push = dt_util.utcnow()
+        self._notify()
         feeder = self._feeder
         self._hass.async_create_task(feeder.records.async_request_refresh(), eager_start=True)
         self._hass.async_create_task(feeder.status.async_request_refresh(), eager_start=True)

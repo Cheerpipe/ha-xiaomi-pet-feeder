@@ -135,7 +135,19 @@
           "exhausted": "Agotado",
           "unknown": "Estado desconocido"
         }
-      }
+      },
+      "update_mode": {
+        "name": "Modo de actualización",
+        "state": {
+          "push": "Push (tiempo real)",
+          "polling": "Consulta periódica (polling)"
+        },
+        "state_attributes": {
+          "push_enabled": { "name": "Tiempo real activado" },
+          "official_entities": { "name": "Entidades de evento de Xiaomi Home" }
+        }
+      },
+      "last_push": { "name": "Última actualización en tiempo real" }
     },
     "binary_sensor": {
       "food_stuck": { "name": "Atasco de comida" },

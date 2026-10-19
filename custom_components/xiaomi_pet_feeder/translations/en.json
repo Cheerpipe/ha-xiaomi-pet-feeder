@@ -135,7 +135,19 @@
           "exhausted": "Run out",
           "unknown": "Status unknown"
         }
-      }
+      },
+      "update_mode": {
+        "name": "Update mode",
+        "state": {
+          "push": "Push (real time)",
+          "polling": "Polling"
+        },
+        "state_attributes": {
+          "push_enabled": { "name": "Real-time updates enabled" },
+          "official_entities": { "name": "Xiaomi Home event entities" }
+        }
+      },
+      "last_push": { "name": "Last real-time update" }
     },
     "binary_sensor": {
       "food_stuck": { "name": "Food jam" },

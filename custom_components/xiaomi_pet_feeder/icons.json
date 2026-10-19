@@ -26,7 +26,14 @@
           "insufficient": "mdi:water-alert",
           "exhausted": "mdi:water-remove"
         }
-      }
+      },
+      "update_mode": {
+        "default": "mdi:timer-refresh-outline",
+        "state": {
+          "push": "mdi:access-point"
+        }
+      },
+      "last_push": { "default": "mdi:lightning-bolt" }
     },
     "binary_sensor": {
       "food_stuck": { "default": "mdi:alert-octagon" },

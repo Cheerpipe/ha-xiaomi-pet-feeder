@@ -112,6 +112,14 @@ Xiaomi pushes device events in real time only to its official [Xiaomi Home](http
 
 It's **on by default** and does nothing until the official entities exist. It also picks them up if you install the official integration later. Turn it off under the integration's **Configure** button (*Real-time updates from Xiaomi Home*). That screen also tells you how many of your feeders were found in the official integration. If the count is 0, check that the feeder was added there and that its event entities are enabled.
 
+To check that it works, look at two diagnostic sensors on the feeder's device page:
+
+- **Update mode**:
+  - `Push (real time)` when the official event entities were found and are available.
+  - `Polling` otherwise.
+  - Its attributes list the official entities it follows.
+- **Last real-time update**: when the last event pushed by the official integration arrived. Once a meal or a dispense happens, it should show a time within seconds. If it stays empty while *Update mode* says push, open an issue with the diagnostics.
+
 ## Troubleshooting
 
 - **"No Smart Pet Food Feeder 2 was found"**: the region is wrong. Try the others.

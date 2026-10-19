@@ -115,13 +115,13 @@ async def async_setup_entry(hass: HomeAssistant, entry: XiaomiPetFeederConfigEnt
     except XiaomiError as err:
         raise ConfigEntryNotReady(str(err)) from err
 
-    entry.runtime_data = XiaomiPetFeederData(client=client, feeders=feeders)
-    await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
-
     if entry.options.get(CONF_OFFICIAL_PUSH, DEFAULT_OFFICIAL_PUSH):
         for feeder in feeders.values():
             feeder.push = OfficialEventListener(hass, feeder)
             entry.async_on_unload(feeder.push.async_start())
+
+    entry.runtime_data = XiaomiPetFeederData(client=client, feeders=feeders)
+    await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
     return True
 
 
