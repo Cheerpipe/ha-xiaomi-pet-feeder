@@ -3,6 +3,8 @@
 <img src="docs/images/feeder.png" alt="Xiaomi Smart Pet Food Feeder 2" align="right" width="180">
 
 [![HACS Custom](https://img.shields.io/badge/HACS-Custom-41BDF5.svg)](https://hacs.xyz/docs/faq/custom_repositories)
+[![Validate](https://github.com/Cheerpipe/ha-xiaomi-pet-feeder/actions/workflows/validate.yml/badge.svg)](https://github.com/Cheerpipe/ha-xiaomi-pet-feeder/actions/workflows/validate.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 *[Leer en español](README.es.md)*
 
